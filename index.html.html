@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IM-FUNDAMENTA</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('ojo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    header {
+      background-color: rgba(3, 42, 88, 0.85);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: rgba(11, 94, 215, 0.95);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 15px;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: rgba(255,255,255,0.3);
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 20px auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+    }
+    section h2 {
+      border-bottom: 2px solid white;
+      padding-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: "\2022 ";
+      color: #ffcc00;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+    }
+    .videos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    iframe {
+      width: 100%;
+      max-width: 480px;
+      height: 270px;
+      margin: 10px;
+      border: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(11, 94, 215, 0.9);
+      color: white;
+      margin-top: 40px;
+    }
+    #chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: white;
+      color: black;
+      border-radius: 8px;
+      padding: 10px;
+      max-width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    #chatbot h3 {
+      margin-top: 0;
+    }
+    #chatbot textarea {
+      width: 100%;
+      resize: none;
+    }
+    #chatbot button {
+      margin-top: 8px;
+      padding: 6px 12px;
+      background-color: #0b5ed7;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #chatbot button:hover {
+      background-color: #0a4fb4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ingeniería Multimedia</h1>
+    <p>Explora los fundamentos, aplicaciones, accesibilidad y ética de la multimedia</p>
+  </header>
+
+  <nav>
+    <a href="#historia" onclick="scrollToSection('historia')">Historia</a>
+    <a href="#fundamentos" onclick="scrollToSection('fundamentos')">Fundamentos</a>
+    <a href="#arquitectura" onclick="scrollToSection('arquitectura')">Arquitectura</a>
+    <a href="#etica" onclick="scrollToSection('etica')">Ética</a>
+    <a href="#aplicaciones" onclick="scrollToSection('aplicaciones')">Aplicaciones</a>
+    <a href="#accesibilidad" onclick="scrollToSection('accesibilidad')">Accesibilidad</a>
+  </nav>
+
+  <!-- Las secciones y videos se agregan dinámicamente en el editor de canvas -->
+
+  <div id="chatbot">
+    <h3>Asistente Virtual</h3>
+    <textarea rows="3" placeholder="Escribe tu pregunta..."></textarea>
+    <button onclick="responderChat()">Enviar</button>
+    <div id="respuesta" style="margin-top:10px;font-size:0.9rem;"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 | Proyecto académico de Ingeniería Multimedia | Desarrollado por Camilo Andrés Luna Ortiz</p>
+  </footer>
+
+  <script>
+    function responderChat() {
+      const textarea = document.querySelector('#chatbot textarea');
+      const respuesta = document.getElementById('respuesta');
+      const pregunta = textarea.value.trim().toLowerCase();
+      if (pregunta.includes("fundamento")) {
+        respuesta.innerText = "Los fundamentos técnicos incluyen muestreo, DCT, MPEG y códecs.";
+      } else if (pregunta.includes("ética")) {
+        respuesta.innerText = "La ética en multimedia aborda el derecho de autor, la función social y la manipulación de la información.";
+      } else if (pregunta.includes("aplicación")) {
+        respuesta.innerText = "Las aplicaciones más comunes son videojuegos, realidad aumentada, animación y publicidad.";
+      } else if (pregunta.includes("accesibilidad")) {
+        respuesta.innerText = "La accesibilidad digital busca que los contenidos sean utilizables por personas con distintas capacidades.";
+      } else {
+        respuesta.innerText = "Gracias por tu pregunta. Un asistente pronto te responderá con más detalle.";
+      }
+      textarea.value = "";
+    }
+
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
